@@ -1,0 +1,5 @@
+aws-elasticache-cluster-client-libmemcached (1.0.18-2~xenial1) xenial; urgency=medium
+
+  * Initial release (Closes: #1843)
+
+ -- Alessandro Chitolina <alessandro.chitolina@fazland.com>  Mon, 13 Feb 2017 09:54:15 +0000

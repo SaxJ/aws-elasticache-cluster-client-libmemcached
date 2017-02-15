@@ -1,0 +1,21 @@
+Source: aws-elasticache-cluster-client-libmemcached
+Priority: optional
+Maintainer: Alessandro Chitolina <alessandro.chitolina@fazland.com>
+Build-Depends: debhelper (>=9),autotools-dev,libevent-dev,gcc,g++,make,autoconf,dh-autoreconf,libsasl2-dev
+Standards-Version: 3.9.6
+Section: libs
+Homepage: https://github.com/awslabs/aws-elasticache-cluster-client-libmemcached
+Vcs-Git: https://github.com/awslabs/aws-elasticache-cluster-client-libmemcached.git
+
+Package: aws-elasticache-cluster-client-libmemcached-dev
+Section: libdevel
+Architecture: amd64
+Depends: aws-elasticache-cluster-client-libmemcached1 (= ${binary:Version}), ${misc:Depends}
+Description: AWS libmemcached - DEVELOPMENT package
+
+Package: aws-elasticache-cluster-client-libmemcached1
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: libmemcached11
+Description: AWS libmemcached
+
