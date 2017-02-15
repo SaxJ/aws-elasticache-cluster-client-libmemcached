@@ -1,4 +1,4 @@
-aws-elasticache-cluster-client-libmemcached (1.0.18-2~xenial1) xenial; urgency=medium
+aws-elasticache-cluster-client-libmemcached (1.0.18-2~trusty2) trusty; urgency=medium
 
   * Initial release (Closes: #1843)
 
