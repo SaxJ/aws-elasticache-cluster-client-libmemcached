@@ -9,7 +9,7 @@
 # All paths should be given relative to the root
 
 TESTS_LDADDS=
-TESTS_LDADDS+= libmemcached/libmemcached.la
+TESTS_LDADDS+= libmemcachedinternal/libmemcachedinternal.la
 TESTS_LDADDS+= libmemcached/libmemcachedutil.la
 TESTS_LDADDS+= libtest/libtest.la
 

@@ -159,6 +159,10 @@ libtest_libtest_la_CXXFLAGS+= $(CURL_CFLAGS)
 libtest_libtest_la_LIBADD+= @PTHREAD_LIBS@
 libtest_libtest_la_LIBADD+= $(CURL_LIBS)
 libtest_libtest_la_LIBADD+= @RT_LIB@
+libtest_libtest_la_LIBADD+= @LIBUUID_LIB@
+libtest_libtest_la_LIBADD+= libmemcached/libmemcached.la 
+libtest_libtest_la_LIBADD+= libmemcached/libmemcachedutil.la 
+libtest_libtest_la_LIBADD+= libhashkit/libhashkit.la 
 
 EXTRA_libtest_libtest_la_DEPENDENCIES+= libtest_tmp_dir
 EXTRA_libtest_libtest_la_DEPENDENCIES+= libtest/abort

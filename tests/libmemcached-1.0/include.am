@@ -88,7 +88,6 @@ tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/generate.cc
 tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/haldenbrand.cc
 tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/ketama.cc
 tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/mem_functions.cc
-tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/dynamic_mode_test.cc
 tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/memcached_get.cc
 tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/namespace.cc
 tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/parser.cc
@@ -103,7 +102,7 @@ tests_libmemcached_1_0_testapp_SOURCES+= tests/libmemcached-1.0/virtual_buckets.
 
 tests_libmemcached_1_0_testapp_LDADD+= @LIBUUID_LIB@
 tests_libmemcached_1_0_testapp_LDADD+= @PTHREAD_LIBS@
-tests_libmemcached_1_0_testapp_LDADD+= libmemcached/libmemcached.la
+tests_libmemcached_1_0_testapp_LDADD+= libmemcachedinternal/libmemcachedinternal.la
 tests_libmemcached_1_0_testapp_LDADD+= libmemcached/libmemcachedutil.la
 tests_libmemcached_1_0_testapp_LDADD+= libtest/libtest.la
 tests_libmemcached_1_0_testapp_LDADD+= libhashkit/libhashkit.la
@@ -153,7 +152,7 @@ tests_libmemcached_1_0_testsocket_SOURCES+= tests/libmemcached-1.0/virtual_bucke
 
 tests_libmemcached_1_0_testsocket_LDADD+= @LIBUUID_LIB@
 tests_libmemcached_1_0_testsocket_LDADD+= @PTHREAD_LIBS@
-tests_libmemcached_1_0_testsocket_LDADD+= libmemcached/libmemcached.la
+tests_libmemcached_1_0_testsocket_LDADD+= libmemcachedinternal/libmemcachedinternal.la
 tests_libmemcached_1_0_testsocket_LDADD+= libmemcached/libmemcachedutil.la
 tests_libmemcached_1_0_testsocket_LDADD+= libtest/libtest.la
 tests_libmemcached_1_0_testsocket_LDADD+= libhashkit/libhashkit.la
@@ -196,7 +195,7 @@ tests_libmemcached_1_0_sasl_SOURCES+= tests/libmemcached-1.0/fetch_all_results.c
 tests_libmemcached_1_0_sasl_SOURCES+= tests/libmemcached-1.0/generate.cc
 
 tests_libmemcached_1_0_sasl_LDADD+= @PTHREAD_LIBS@
-tests_libmemcached_1_0_sasl_LDADD+= libmemcached/libmemcached.la
+tests_libmemcached_1_0_sasl_LDADD+= libmemcachedinternal/libmemcachedinternal.la
 tests_libmemcached_1_0_sasl_LDADD+= libmemcached/libmemcachedutil.la
 tests_libmemcached_1_0_sasl_LDADD+= libtest/libtest.la
 tests_libmemcached_1_0_sasl_LDADD+= libhashkit/libhashkit.la
@@ -223,6 +222,32 @@ tests_atomsmasher_SOURCES+= tests/libmemcached-1.0/fetch_all_results.cc
 tests_atomsmasher_SOURCES+= tests/libmemcached-1.0/generate.cc
 tests_atomsmasher_SOURCES+= tests/libmemcached-1.0/print.cc
 noinst_PROGRAMS+= tests/atomsmasher
+
+tests_dynamic_mode_test_SOURCES=
+tests_dynamic_mode_test_LDADD=
+
+tests_dynamic_mode_test_LDADD+= $(TESTS_LDADDS)
+tests_dynamic_mode_test_SOURCES+= clients/execute.cc
+tests_dynamic_mode_test_SOURCES+= clients/generator.cc
+tests_dynamic_mode_test_SOURCES+= tests/libmemcached-1.0/dynamic_mode_test.cc
+tests_dynamic_mode_test_SOURCES+= tests/libmemcached-1.0/callback_counter.cc
+tests_dynamic_mode_test_SOURCES+= tests/libmemcached-1.0/debug.cc
+tests_dynamic_mode_test_SOURCES+= tests/libmemcached-1.0/fetch_all_results.cc
+tests_dynamic_mode_test_SOURCES+= tests/libmemcached-1.0/generate.cc
+tests_dynamic_mode_test_SOURCES+= tests/libmemcached-1.0/print.cc
+noinst_PROGRAMS+= tests/dynamic_mode_test
+
+test-dynamic_mode_test: tests/dynamic_mode_test
+	@tests/dynamic_mode_test
+
+gdb-dynamic_mode_test: tests/dynamic_mode_test
+	@$(GDB_COMMAND) tests/dynamic_mode_test
+
+valgrind-dynamic_mode_test: tests/dynamic_mode_test
+	$(VALGRIND_COMMAND) tests/dynamic_mode_test
+
+helgrind-dynamic_mode_test: tests/dynamic_mode_test
+	@$(HELGRIND_COMMAND) tests/dynamic_mode_test
 
 tests_testudp_CFLAGS=
 tests_testudp_SOURCES=
