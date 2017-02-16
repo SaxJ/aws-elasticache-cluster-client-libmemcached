@@ -11,11 +11,13 @@ Package: aws-elasticache-cluster-client-libmemcached-dev
 Section: libdevel
 Architecture: amd64
 Depends: aws-elasticache-cluster-client-libmemcached1 (= ${binary:Version}), ${misc:Depends}
+Provides: libmemcached-dev
 Description: AWS libmemcached - DEVELOPMENT package
 
 Package: aws-elasticache-cluster-client-libmemcached1
 Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: libmemcached11
 Conflicts: libmemcached11
 Description: AWS libmemcached
 
