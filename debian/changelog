@@ -1,3 +1,9 @@
+aws-elasticache-cluster-client-libmemcached (1.0.18-2~xenial2) xenial; urgency=medium
+
+  * Added provides section in package control file
+
+ -- Alessandro Chitolina <alessandro.chitolina@fazland.com>  Mon, 16 Feb 2017 16:52:50 +0000
+
 aws-elasticache-cluster-client-libmemcached (1.0.18-2~xenial1) xenial; urgency=medium
 
   * Initial release (Closes: #1843)
